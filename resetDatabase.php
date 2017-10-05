@@ -50,7 +50,7 @@ mysqli_select_db($conn,"scrum");
 //Users Table
 
 $sql = "CREATE TABLE `courseSystem`.`student`
-          ( `id` INT NOT NULL AUTO_INCREMENT , `username` VARCHAR(255) NOT NULL, `password` VARCHAR(255) NOT NULL , PRIMARY KEY (`id`)) ENGINE = MyISAM;";
+          ( `id` INT NOT NULL AUTO_INCREMENT , `studentName` VARCHAR(255) NOT NULL, `password` VARCHAR(255) NOT NULL , PRIMARY KEY (`id`)) ENGINE = MyISAM;";
 if ($conn->query($sql) === TRUE) {
     echo "TABLE users created successfully</br>";
 } else {
@@ -59,7 +59,7 @@ if ($conn->query($sql) === TRUE) {
 
 //Test data for users table
 $sql = "INSERT INTO `student`
-       (`id`, `username`, `password`)
+       (`id`, `studentName`, `password`)
        VALUES (NULL, 'amy', '123456')";
 if ($conn->query($sql) === TRUE) {
    echo "Inserted DATA student successfully</br>";
