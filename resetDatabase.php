@@ -52,7 +52,7 @@ mysqli_select_db($conn,"courseSystem");
 $sql = "CREATE TABLE `courseSystem`.`student`
           ( `studentId` INT NOT NULL AUTO_INCREMENT , `studentName` VARCHAR(255) NOT NULL, `password` VARCHAR(255) NOT NULL , `course` VARCHAR(255) NOT NULL , PRIMARY KEY (`studentId`)) ENGINE = MyISAM;";
 if ($conn->query($sql) === TRUE) {
-    echo "TABLE users created successfully</br>";
+    echo "TABLE student created successfully</br>";
 } else {
     echo "Error creating TABLE student: " . $conn->error . "</br>";
 }
@@ -67,6 +67,33 @@ if ($conn->query($sql) === TRUE) {
    echo "Error inserting data into student table: " . $conn->error . "</br>";
 }
 
+//Courses Table
+$sql = "CREATE TABLE `courseSystem`.`course`
+          (`courseId` INT NOT NULL AUTO_INCREMENT, `courseName` VARCHAR(255) NOT NULL, `courseState` VARCHAR(255) NOT NULL, `courseFee` INT NOT NULL, `courseTeacher` VARCHAR(255) NOT NULL, `courseCredit` INT NOT NULL, `Pre-requisiteCourse` INT, PRIMARY KEY (`courseId`)) ENGINE = MyISAM;";
+if($conn->query($sql) == TRUE){
+  echo "TABLE course created successfully</br>";
+} else{
+  echo "Error creating TABLE course: " . $conn->error . "</br>";
+}
+
+//Test data for course table
+$sql = "INSERT INTO `course`
+       (`courseId`, `courseName`, `courseState`, `courseFee`, `courseTeacher`, `courseCredit` , `Pre-requisiteCourse`)
+       VALUES (001, 'math1', 'COMPULSORY' , '1000' , 'TOM' , '4' , NULL)";
+if ($conn->query($sql) === TRUE) {
+   echo "Inserted DATA course successfully</br>";
+} else {
+   echo "Error inserting data into course table: " . $conn->error . "</br>";
+}
+
+$sql = "INSERT INTO `course`
+       (`courseId`, `courseName`, `courseState`, `courseFee`, `courseTeacher`, `courseCredit` , `Pre-requisiteCourse`)
+       VALUES (002, 'math2', 'COMPULSORY' , '1000' , 'TOM' , '4' , '001')";
+if ($conn->query($sql) === TRUE) {
+   echo "Inserted DATA course successfully</br>";
+} else {
+   echo "Error inserting data into course table: " . $conn->error . "</br>";
+}
 
 //close the connection
 $conn->close();
