@@ -1,11 +1,11 @@
 
-<?php include 'helper_php/loginFunctions.php';
+<?php include 'helper_php/loginFunction.php';
 if(IsUserLoggedIn()){
   header ('Location: course.php');
 } elseif(isset($_POST['login'])){
-  $studentName = $_POST ['studentName'];
+  $studentId = $_POST ['studentId'];
   $password = $_POST ['password'];
-  if(ValidateCredentials($studentName,$password)){
+  if(ValidateCredentials($studentId,$password)){
       //if redirect path is set redirect since already signed in.
     if(isset($redirect)) {
         header ('Location: ' . $redirect);
@@ -14,14 +14,14 @@ if(IsUserLoggedIn()){
         header ('Location: ./');
     }
   }else {
-	  echo "<script>alert('Please check username and password!')</script>";
+	  echo "<script>alert('Please check studentID and password!')</script>";
     //echo "check username and password";
   }
 }
+?>
 
-
-<form class="form" action="" method="post" enctype="multipart/form-data">
-
+<form class="form" action="" method="post">
+<?php
       echo '<input type="hidden" name="location" value="';
       if(isset($_GET['location'])) {
         echo htmlspecialchars($_GET['location']);
@@ -39,5 +39,5 @@ if(IsUserLoggedIn()){
 <div class="form-group text-right" >
       <input type="submit" name="login" value="Login">
     </div>
-?>
+
 </form>

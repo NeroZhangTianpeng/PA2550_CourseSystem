@@ -9,12 +9,12 @@ function IsUserLoggedIn(){
   }
 }
 
-function ValidateCredentials($studentName,$password){
+function ValidateCredentials($studentId,$password){
  global $connection;
 
-   $studentName = mysqli_real_escape_string($connection,$studentName);
+   $studentId = mysqli_real_escape_string($connection,$studentId);
    $password = mysqli_real_escape_string($connection,$password);
-   $sql = "SELECT * FROM users WHERE username = '{$studentName}'";
+   $sql = "SELECT * FROM student WHERE id = '{$studentId}'";
    $result  = mysqli_query($connection, $sql);
    confirmQuery($result);
 
@@ -25,7 +25,7 @@ function ValidateCredentials($studentName,$password){
     //  $hashFAndSalt = $hashFormat . $salt;
     //  $encryptedPassword = crypt($password,$hashFAndSalt);
 
-     $sql = "SELECT * FROM student WHERE studentName = '{$studentName}' AND password = '{$password}' ";
+     $sql = "SELECT * FROM student WHERE id = '{$studentId}' AND password = '{$password}' ";
      $result  = mysqli_query($connection, $sql);
      confirmQuery($result);
 
@@ -37,7 +37,7 @@ function ValidateCredentials($studentName,$password){
              session_start();
          }
          $_SESSION['loggedIn'] = true;
-         $_SESSION['studentId'] = $row ['id'];
+         $_SESSION['studentId'] = $row ['studentId'];
          $_SESSION['username'] = $row ['username'];
          return $_SESSION['loggedIn'] ;
       //  } else {
@@ -58,15 +58,15 @@ function LogoutUser(){
   header ('Location : course.php');
 }
 
-function getUserInitById($userId){
-  global $connection;
-    $sql = "SELECT UPPER(LEFT(username,2)) init FROM users WHERE id = {$userId}";
-    $result = mysqli_query($connection, $sql);
-    confirmQuery($result);
-    $row = mysqli_fetch_array($result);
-    return $row['init'];
-
-}
+// function getUserInitById($studentId){
+//   global $connection;
+//     $sql = "SELECT UPPER(LEFT(username,2)) init FROM users WHERE id = {$userId}";
+//     $result = mysqli_query($connection, $sql);
+//     confirmQuery($result);
+//     $row = mysqli_fetch_array($result);
+//     return $row['init'];
+//
+// }
 
 
  ?>
