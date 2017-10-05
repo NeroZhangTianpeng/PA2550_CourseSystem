@@ -60,7 +60,7 @@ if ($conn->query($sql) === TRUE) {
 //Test data for users table
 $sql = "INSERT INTO `student`
        (`studentId`, `studentName`, `password`, `course`)
-       VALUES (001, 'amy', '123456' , 'math1')";
+       VALUES (100, 'amy', '123456' , 'math1')";
 if ($conn->query($sql) === TRUE) {
    echo "Inserted DATA student successfully</br>";
 } else {
