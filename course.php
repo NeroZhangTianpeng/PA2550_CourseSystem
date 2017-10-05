@@ -16,7 +16,7 @@
         <td>Math1</td>
         <td>2017</td>
         <td>Zhang</td>
-        <td><a href="choosesuccess.php">choose</a></td>
+        <td><a href="#">choose</a></td>
     </tr>
     </tbody>
 </table>
