@@ -1,19 +1,22 @@
 <p>Course System</p>
 <p> Register compulsory courses</p>
 <table>
-  <tr>
-    <th>Course Name</th>
-    <th>Pre-requisite Course<th>
-    <th>Course Time<th>
-    <th>Course Teacher<th>
-    <th>Choose Or Not<th>
-   </tr>
-  
-  <tr>
-    <td>Math2</td>
-    <td>Math1</td>
-    <td>2017</td>
-    <td>Zhang</td>
-    <td>Not</td>
-  </tr>
+    <thead>
+    <tr>
+        <td>Course Name</td>
+        <td>Pre-requisite Course</td>
+        <td>Course Time</td>
+        <td>Course Teacher</td>
+        <td>Choose Or Not</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>Math2</td>
+        <td>Math1</td>
+        <td>2017</td>
+        <td>Zhang</td>
+        <td href="choosesuccess.php">choosesuccess.php</td>
+    </tr>
+    </tbody>
 </table>
