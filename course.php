@@ -10,9 +10,48 @@
   	$studentId=$_SESSION['studentId'];
   	echo $courseId;
   	echo $studentId;
-  	$sql = "select * from course_student when `courseId` = ".$courseId." and `studentId` = ".$studentId."";
-  	if($conn->query($sql)){echo "<script>alert('1')</script>";}
-  	else {echo "<script>alert('2')</script>";}
+  	$sql = "select * from student_course where courseId = '".$courseId."' and studentId = '".$studentId."'";
+    $result1=$conn->query($sql);
+    
+  	if(mysqli_num_rows($result1)){
+      echo "<script>alert('You have select this course')</script>";
+    }
+  	else {
+      $sql2 = "select courseId from student_course where studentId = '".$studentId."'";
+      $result2 = $conn->query($sql2);
+      while($row1=$result2->fetch_array()){
+            $arr[] = $row1["courseId"];
+      }
+      global $sunCredit;
+      $sunCredit=0;
+      foreach ($arr as $value) {
+        //echo $value;
+        $sql3 = "select courseCredit from course where courseId = '".$value."'";
+        $result3 = $conn->query($sql3);
+        $row2 = $result3->fetch_row();
+        $sunCredit=$sunCredit+$row2[0];
+      }
+      echo "credit:".$sunCredit;
+      $sql4 = "select courseCredit from course where courseId = '".$courseId."'";
+      $result4 = $conn->query($sql4);
+      $row3 =$result4->fetch_row();
+      $addCredit = $row3[0];
+      if($sunCredit+$addCredit>4){
+        echo "<script>alert('Your credit out of limit')</script>";
+      }
+      else{
+        $sql5 = "INSERT INTO  `student_course`
+                (`studentId`, `courseId`)
+                VALUES (".$studentId.",".$courseId.") ";
+        if($conn->query($sql5)){
+          echo "<script>alert('You select course successfully')</script>";
+        }
+        else{
+          echo "<script>alert('system error!')</script>";
+        }
+      }
+      //echo mysqli_field_count($result2);
+    }
   }
   
 ?>
@@ -32,9 +71,11 @@
     </tr>
     </thead>
     <tbody>
+
     <?php foreach ($result as $row) {
         echo "<tr><td>".$row['courseId']."</td><td>".$row['courseName']."</td><td>".$row['courseState']."</td><td>".$row['courseFee']."</td><td>".$row['courseTeacher']."</td><td>".$row['courseCredit']."</td><td>".$row['Pre-requisiteCourse']."</td></tr>";
     } ?>
+
     </tbody>
 </table>
 <form method="post">
