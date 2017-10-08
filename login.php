@@ -5,7 +5,7 @@
     if(ValidateCredentials($_POST['studentId'],$_POST['password'])){
       header('Location:course.php');
     }else {
-  	  echo "<script>alert('Please check student ID and password!')</script>";
+  	 // echo "<script>alert('Please check student ID and password!')</script>";
       //echo "check username and password";
     }
   }

@@ -32,9 +32,21 @@
     </tr>
     </thead>
     <tbody>
-    <?php foreach ($result as $row) {
-        echo "<tr><td>".$row['courseId']."</td><td>".$row['courseName']."</td><td>".$row['courseState']."</td><td>".$row['courseFee']."</td><td>".$row['courseTeacher']."</td><td>".$row['courseCredit']."</td><td>".$row['Pre-requisiteCourse']."</td></tr>";
-    } ?>
+    <tr>
+        <?php foreach ($courseName as $key => $value){
+          // for($i=0; $i<count($courseName); $i++){
+              echo "<td>" . $value . "</td>";
+          // }
+        }
+
+           ?>
+
+        <!-- <td>Math2</td>
+        <td>Math1</td> -->
+        <td>2017</td>
+        <td>Zhang</td>
+        <td><a href="chooseCourseJudge.php">choose</a></td>
+    </tr>
     </tbody>
 </table>
 <form method="post">
