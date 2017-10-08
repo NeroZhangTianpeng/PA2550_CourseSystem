@@ -6,16 +6,37 @@
    global $conn;
    $judgement = FALSE;
 
-   $sql = "SELECT password FROM student";
+   $sql = "SELECT password FROM student WHERE studentID=$studentId";
    $result = $conn->query($sql);
 
-   $passwordRes = array();
-   $j = 0;
-   while($rows=$result -> fetch_assoc())
-   {
-     $passwordRes[$j] = $rows['password'];
-     $j++;
-   }
+   if ($result->num_rows > 0){
+    // 输出数据
+      while($row = $result->fetch_assoc()) {
+          if($row['password'] == $password){
+              echo "Login successfully!";
+              $judgement = TRUE;
+            }else{
+              echo "Wrong information!";
+            }
+    }
+    } else {
+      echo "No this user!";
+    }
+
+
+   echo '</br>';
+   echo $password;
+   echo '</br>';
+   echo $studentId;
+   echo '</br>';
+   //
+  //  $passwordRes = array();
+  //  $j = 0;
+  //  while($rows=$result -> fetch_assoc())
+  //  {
+  //    $passwordRes[$j] = $rows['password'];
+  //    $j++;
+  //  }
 
   //  $sql = "SELECT password FROM student";
   // //  $result = $conn->query($sql);
@@ -30,19 +51,10 @@
   //   }
 
 
-//    if(empty($result) == FALSE){
-//      if($result == $password){
-//        $judgement = TRUE;
-//        echo "Login successfully!";
-//      }else{
-//        echo "Wrong password!";
-//      }
-//    }else{
-//      echo "Please check your ID!";
-//    }
-//
-//    return $judgement;
-// }
+
+
+
+   return $judgement;
 }
 
  ?>

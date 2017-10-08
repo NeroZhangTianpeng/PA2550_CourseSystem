@@ -2,8 +2,7 @@
 <?php
   include 'helper_php/loginFunction.php';
 
-
-    if(ValidateCredentials($_POST['$studentId'],$_POST['password']) == TRUE){
+    if(ValidateCredentials($_POST['studentId'],$_POST['password'])){
       header('Location:course.php');
     }else {
   	  echo "<script>alert('Please check student ID and password!')</script>";
@@ -13,7 +12,7 @@
 
 ?>
 
-<form class="form" action="course.php" method="post">
+<form class="form" action="" method="post">
   Student ID<input type="text" id="studentId" name="studentId" placeholder="studentId">
   Passward<input type="password" id="password "name="password" placeholder="password">
 <div class="form-group text-right" >
