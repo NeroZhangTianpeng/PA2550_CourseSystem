@@ -50,7 +50,7 @@ mysqli_select_db($conn,"courseSystem");
 //Users Table
 
 $sql = "CREATE TABLE `courseSystem`.`student`
-          ( `studentId` INT NOT NULL AUTO_INCREMENT , `studentName` VARCHAR(255) NOT NULL, `password` VARCHAR(255) NOT NULL , `course` VARCHAR(255) NOT NULL , PRIMARY KEY (`studentId`)) ENGINE = MyISAM;";
+          ( `studentId` INT NOT NULL AUTO_INCREMENT , `studentName` VARCHAR(255) NOT NULL, `password` VARCHAR(255) NOT NULL , PRIMARY KEY (`studentId`)) ENGINE = MyISAM;";
 if ($conn->query($sql) === TRUE) {
     echo "TABLE student created successfully</br>";
 } else {
@@ -59,8 +59,8 @@ if ($conn->query($sql) === TRUE) {
 
 //Test data for users table
 $sql = "INSERT INTO `student`
-       (`studentId`, `studentName`, `password`, `course`)
-       VALUES (100, 'amy', '123456' , 'math1')";
+       (`studentId`, `studentName`, `password`)
+       VALUES (001, 'amy', '123456')";
 if ($conn->query($sql) === TRUE) {
    echo "Inserted DATA student successfully</br>";
 } else {
@@ -79,7 +79,7 @@ if($conn->query($sql) == TRUE){
 //Test data for course table
 $sql = "INSERT INTO `course`
        (`courseId`, `courseName`, `courseState`, `courseFee`, `courseTeacher`, `courseCredit` , `Pre-requisiteCourse`)
-       VALUES (001, 'math1', 'COMPULSORY' , '1000' , 'TOM' , '4' , NULL)";
+       VALUES (001, 'math1', 'COMPULSORY' , '1000' , 'TOM' , '2' , NULL)";
 if ($conn->query($sql) === TRUE) {
    echo "Inserted DATA course successfully</br>";
 } else {
@@ -88,11 +88,39 @@ if ($conn->query($sql) === TRUE) {
 
 $sql = "INSERT INTO `course`
        (`courseId`, `courseName`, `courseState`, `courseFee`, `courseTeacher`, `courseCredit` , `Pre-requisiteCourse`)
-       VALUES (002, 'math2', 'COMPULSORY' , '1000' , 'TOM' , '4' , '001')";
+       VALUES (002, 'math2', 'COMPULSORY' , '1000' , 'TOM' , '2' , '001')";
 if ($conn->query($sql) === TRUE) {
    echo "Inserted DATA course successfully</br>";
 } else {
    echo "Error inserting data into course table: " . $conn->error . "</br>";
+}
+
+$sql = "INSERT INTO `course`
+       (`courseId`, `courseName`, `courseState`, `courseFee`, `courseTeacher`, `courseCredit` , `Pre-requisiteCourse`)
+       VALUES (003, 'math3', 'COMPULSORY' , '1000' , 'TOM' , '3' , '002')";
+if ($conn->query($sql) === TRUE) {
+   echo "Inserted DATA course successfully</br>";
+} else {
+   echo "Error inserting data into course table: " . $conn->error . "</br>";
+}
+//Course and student
+
+$sql = "CREATE TABLE `courseSystem`.`student_course`
+          ( `studentId` INT NOT NULL, `courseId` INT NOT NULL , `mark` INT , PRIMARY KEY (`studentId`,`courseId`)) ENGINE = MyISAM;";
+if ($conn->query($sql) === TRUE) {
+    echo "TABLE student_course created successfully</br>";
+} else {
+    echo "Error creating TABLE student_course: " . $conn->error . "</br>";
+}
+
+//Tese data for student_course
+$sql = "INSERT INTO `student_course`
+		(`studentId`, `courseId`, `mark`)
+		VALUES (001, 001, 60)";
+if ($conn->query($sql) === TRUE) {
+   echo "Inserted DATA student_course successfully</br>";
+} else {
+   echo "Error inserting data into student_course table: " . $conn->error . "</br>";
 }
 
 //close the connection
