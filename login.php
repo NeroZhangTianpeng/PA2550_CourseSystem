@@ -1,5 +1,5 @@
-
 <?php
+  session_start();
   include 'helper_php/loginFunction.php';
 
     if(ValidateCredentials($_POST['studentId'],$_POST['password'])){
@@ -8,7 +8,7 @@
   	  echo "<script>alert('Please check student ID and password!')</script>";
       //echo "check username and password";
     }
-
+  }
 
 ?>
 
@@ -20,3 +20,4 @@
     </div>
 
 </form>
+</html>
