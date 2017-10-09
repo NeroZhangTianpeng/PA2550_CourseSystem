@@ -8,13 +8,13 @@
   	$courseId=$_POST['courseId'];
   	
   	$studentId=$_SESSION['studentId'];
-  	echo $courseId;
-  	echo $studentId;
+  	//echo $courseId;
+  	//echo $studentId;
   	$sql = "select * from student_course where courseId = '".$courseId."' and studentId = '".$studentId."'";
     $result1=$conn->query($sql);
     
   	if(mysqli_num_rows($result1)){
-      echo "<script>alert('You have select this course')</script>";
+      echo "<script>alert('You have selected this course')</script>";
     }
   	else {
       $sql2 = "select courseId from student_course where studentId = '".$studentId."'";
@@ -31,7 +31,7 @@
         $row2 = $result3->fetch_row();
         $sunCredit=$sunCredit+$row2[0];
       }
-      echo "credit:".$sunCredit;
+      //echo "credit:".$sunCredit;
       $sql4 = "select courseCredit from course where courseId = '".$courseId."'";
       $result4 = $conn->query($sql4);
       $row3 =$result4->fetch_row();
@@ -40,14 +40,27 @@
         echo "<script>alert('Your credit out of limit')</script>";
       }
       else{
-        $sql5 = "INSERT INTO  `student_course`
+        $sql5 = "SELECT `Pre-requisiteCourse` from course WHERE courseId = '".$courseId."'";
+        $result5 = $conn->query($sql5);
+        $row4 = $result5->fetch_row();
+        $pre_courseId = $row4[0];
+        $sql6 = "SELECT mark from student_course WHERE courseId = '".$pre_courseId."' and studentId = '".$studentId."'";
+        $result6 = $conn->query($sql6);
+        $row5 = $result6->fetch_row();
+        $mark = $row5[0];
+        if($mark >= 60){
+          $sql7 = "INSERT INTO  `student_course`
                 (`studentId`, `courseId`)
                 VALUES (".$studentId.",".$courseId.") ";
-        if($conn->query($sql5)){
-          echo "<script>alert('You select course successfully')</script>";
+          if($conn->query($sql7)){
+            echo "<script>alert('You select course successfully')</script>";
+          }
+          else{
+            echo "<script>alert('system error!')</script>";
+          }
         }
         else{
-          echo "<script>alert('system error!')</script>";
+          echo "<script>alert('You should pass the Pre-requisite Course ID:".$pre_courseId."')</script>";
         }
       }
       //echo mysqli_field_count($result2);
