@@ -19,7 +19,7 @@
   <option value ="teacher">teacher</option>
   <option value ="teacher">academicCoordinator</option>
 </select><br>
-  Student ID<input type="text" id="userId" name="userId" placeholder="userId">
+  User ID<input type="text" id="userId" name="userId" placeholder="userId">
   Passward<input type="password" id="password" name="password" placeholder="password">
 <div class="form-group text-right" >
       <input type="submit" name="login" value="Login">
