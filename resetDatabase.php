@@ -47,7 +47,7 @@ if ($conn->query($sql) === TRUE) {
 
 mysqli_select_db($conn,"courseSystem");
 
-//Users Table
+//Students Table
 
 $sql = "CREATE TABLE `courseSystem`.`student`
           ( `studentId` INT NOT NULL AUTO_INCREMENT , `studentName` VARCHAR(255) NOT NULL, `password` VARCHAR(255) NOT NULL , PRIMARY KEY (`studentId`)) ENGINE = MyISAM;";
@@ -57,7 +57,7 @@ if ($conn->query($sql) === TRUE) {
     echo "Error creating TABLE student: " . $conn->error . "</br>";
 }
 
-//Test data for users table
+//Test data for students table
 $sql = "INSERT INTO `student`
        (`studentId`, `studentName`, `password`)
        VALUES (001, 'amy', '123456')";
@@ -65,6 +65,46 @@ if ($conn->query($sql) === TRUE) {
    echo "Inserted DATA student successfully</br>";
 } else {
    echo "Error inserting data into student table: " . $conn->error . "</br>";
+}
+
+//Teachers Table
+
+$sql = "CREATE TABLE `courseSystem`.`teacher`
+          ( `teacherId` INT NOT NULL AUTO_INCREMENT , `teacherName` VARCHAR(255) NOT NULL, `password` VARCHAR(255) NOT NULL , `courseId` VARCHAR(255) NOT NULL , PRIMARY KEY (`teacherId`)) ENGINE = MyISAM;";
+if ($conn->query($sql) === TRUE) {
+    echo "TABLE teacher created successfully</br>";
+} else {
+    echo "Error creating TABLE teacher: " . $conn->error . "</br>";
+}
+
+//Test data for teachers table
+$sql = "INSERT INTO `teacher`
+       (`teacherId`, `teacherName`, `password`, `courseId`)
+       VALUES (10001, 'Tony', '222222' , '001')";
+if ($conn->query($sql) === TRUE) {
+   echo "Inserted DATA teacher successfully</br>";
+} else {
+   echo "Error inserting data into teacher table: " . $conn->error . "</br>";
+}
+
+//Academic officers Table
+
+$sql = "CREATE TABLE `courseSystem`.`academicCoo`
+          ( `academicCooId` INT NOT NULL AUTO_INCREMENT , `academicCooName` VARCHAR(255) NOT NULL, `password` VARCHAR(255) NOT NULL, PRIMARY KEY (`academicCooId`)) ENGINE = MyISAM;";
+if ($conn->query($sql) === TRUE) {
+    echo "TABLE academicCoo created successfully</br>";
+} else {
+    echo "Error creating TABLE academicCoo: " . $conn->error . "</br>";
+}
+
+//Test data for academic officers table
+$sql = "INSERT INTO `academicCoo`
+       (`academicCooId`, `academicCooName`, `password`)
+       VALUES (20001, 'Tommy', '333333')";
+if ($conn->query($sql) === TRUE) {
+   echo "Inserted DATA academicCoo successfully</br>";
+} else {
+   echo "Error inserting data into academicCoo table: " . $conn->error . "</br>";
 }
 
 //Courses Table
