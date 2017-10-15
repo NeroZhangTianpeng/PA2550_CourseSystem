@@ -69,15 +69,15 @@ if ($conn->query($sql) === TRUE) {
 } else {
    echo "Error inserting data into teacher table: " . $conn->error . "</br>";
 }
-//Academic officers Table
+//Academic coordinator Table
 $sql = "CREATE TABLE `courseSystem`.`academicCoordinator`
-          ( `academicCooId` INT NOT NULL AUTO_INCREMENT , `academicCooName` VARCHAR(255) NOT NULL, `password` VARCHAR(255) NOT NULL, PRIMARY KEY (`academicCooId`)) ENGINE = MyISAM;";
+          ( `academicCoordinatorId` INT NOT NULL AUTO_INCREMENT , `academicCoordinatorName` VARCHAR(255) NOT NULL, `password` VARCHAR(255) NOT NULL, PRIMARY KEY (`academicCoordinatorId`)) ENGINE = MyISAM;";
 if ($conn->query($sql) === TRUE) {
     echo "TABLE academicCoordinator created successfully</br>";
 } else {
     echo "Error creating TABLE academicCoordinator: " . $conn->error . "</br>";
 }
-//Test data for academic officers table
+//Test data for academic coordinator table
 $sql = "INSERT INTO `academicCoordinator`
        (`academicCoordinatorId`, `academicCoordinatorName`, `password`)
        VALUES (20001, 'Tommy', '333333')";
