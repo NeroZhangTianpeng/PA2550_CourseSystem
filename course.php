@@ -19,8 +19,8 @@
   	else {
       $sql2 = "select courseId from student_course where studentId = '".$studentId."'";
       $result2 = $conn->query($sql2);
-      while($row1=$result2->fetch_array()){
-            $arr[] = $row1["courseId"];
+      while($row2=$result2->fetch_array()){
+            $arr[] = $row2["courseId"];
       }
       global $sunCredit;
       $sunCredit=0;
@@ -28,36 +28,71 @@
         //echo $value;
         $sql3 = "select courseCredit from course where courseId = '".$value."'";
         $result3 = $conn->query($sql3);
-        $row2 = $result3->fetch_row();
-        $sunCredit=$sunCredit+$row2[0];
+        $row3 = $result3->fetch_row();
+        $sunCredit=$sunCredit+$row3[0];
       }
       //echo "credit:".$sunCredit;
       $sql4 = "select courseCredit from course where courseId = '".$courseId."'";
       $result4 = $conn->query($sql4);
-      $row3 =$result4->fetch_row();
-      $addCredit = $row3[0];
-      if($sunCredit+$addCredit>4){
+      $row4 =$result4->fetch_row();
+      $addCredit = $row4[0];
+      if($sunCredit+$addCredit>8){
         echo "<script>alert('Your credit out of limit')</script>";
       }
       else{
         $sql5 = "SELECT `Pre-requisiteCourse` from course WHERE courseId = '".$courseId."'";
         $result5 = $conn->query($sql5);
-        $row4 = $result5->fetch_row();
-        $pre_courseId = $row4[0];
+        $row5 = $result5->fetch_row();
+        $pre_courseId = $row5[0];
         $sql6 = "SELECT mark from student_course WHERE courseId = '".$pre_courseId."' and studentId = '".$studentId."'";
         $result6 = $conn->query($sql6);
-        $row5 = $result6->fetch_row();
-        $mark = $row5[0];
-        if($mark >= 60){
-          $sql7 = "INSERT INTO  `student_course`
-                (`studentId`, `courseId`)
-                VALUES (".$studentId.",".$courseId.") ";
-          if($conn->query($sql7)){
-            echo "<script>alert('You select course successfully')</script>";
-          }
-          else{
-            echo "<script>alert('system error!')</script>";
-          }
+        $row6 = $result6->fetch_row();
+        $mark = $row6[0];
+        if($mark >= 60 || $pre_courseId == NULL){
+			$sql7 = "SELECT `courseState` from course WHERE courseId = '".$courseId."'";
+			$result7 = $conn->query($sql7);
+			$row7 = $result7->fetch_row();
+			$courseState = $row7[0];
+			if($courseState == "COMPULSORY"){
+	            $sql8 = "INSERT INTO  `student_course`
+	                  (`studentId`, `courseId`)
+	                  VALUES (".$studentId.",".$courseId.") ";
+	            if($conn->query($sql8)){
+	              echo "<script>alert('You select course: ".$courseId." successfully')</script>";
+	            }
+	            else{
+	              echo "<script>alert('system error!')</script>";
+	            }
+			}
+			else{
+				$sql9 = "SELECT `AmountElectiveCourse` FROM student WHERE studentId = '".$studentId."'";
+				$result9 = $conn->query($sql9);
+				$row9 = $result9->fetch_row();
+				$NumEleCourse = $row9[0];
+				if($NumEleCourse < 2){
+		            $sql10 = "INSERT INTO  `student_course`
+		                  (`studentId`, `courseId`)
+		                  VALUES (".$studentId.",".$courseId.") ";
+		            if($conn->query($sql10)){
+					  $NowNumEleCourse = $NumEleCourse + 1;
+					  $sql11 = "UPDATE student SET `AmountElectiveCourse` = '".$NowNumEleCourse."' WHERE studentId = '".$studentId."'";
+					  if($conn->query($sql11)){
+					  	echo "<script>alert('You select course: ".$courseId." successfully')</script>";
+					  }
+					  else{
+					  	echo "<script>alert('You select course: ".$courseId." successfully, but update amount of elective failure')</script>";
+					  }
+		              
+		            }
+		            else{
+		              echo "<script>alert('system error!')</script>";
+		            }
+				}
+				else{
+				  echo "<script>alert('Selected failure! You have selected 2(MAX) elective courses!')</script>";
+				}
+			}
+			
         }
         else{
           echo "<script>alert('You should pass the Pre-requisite Course ID:".$pre_courseId."')</script>";
