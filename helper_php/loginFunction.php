@@ -2,76 +2,37 @@
   include 'includes/db.php';
 
 
-
-
-
-  function ValidateCredentials($Id,$password){
+  function ValidateCredentials($userId,$password,$identity){
    global $conn;
    $judgement = FALSE;
-      // Student login 
-    if($_POST['selectUser'] == 'student'){
-        $sql = "SELECT password FROM student WHERE studentID=$Id";
-        $result = $conn->query($sql);
-
-        if ($result->num_rows > 0){
-        // output data
-        while($row = $result->fetch_assoc()) {
+   $condition1 = "student";
+   $condition2 = "teacher";
+   $sql1= "SELECT password FROM student WHERE studentId=$userId";
+   $sql2= "SELECT password FROM teacher WHERE teacherId=$userId";
+   $sql3= "SELECT password FROM academicCoordinator WHERE academicCoordinatorId=$userId";
+   if($identity=="student"){
+    $result = $conn->query($sql1);
+   }
+   else if($identity=="teacher"){
+    $result = $conn->query($sql2);
+   }
+   else if($identity=="academicCoordinator"){
+    $result = $conn->query($sql3);
+   }
+   if ($result->num_rows > 0){
+    // 输出数据
+      while($row = $result->fetch_assoc()) {
           if($row['password'] == $password){
               echo "Login successfully!";
               $judgement = TRUE;
             }else{
               echo "Wrong information!";
             }
-        }
-        } else {
-            echo "No this user!";
-        }
-        return $judgement;
     }
-      
-      //Teacher login
-      if($_POST['selectUser'] == 'teacher'){
-        $sql = "SELECT password FROM teacher WHERE teacherID=$Id";
-        $result = $conn->query($sql);
-
-        if ($result->num_rows > 0){
-        // output data
-        while($row = $result->fetch_assoc()) {
-          if($row['password'] == $password){
-              echo "Login successfully!";
-              $judgement = TRUE;
-            }else{
-              echo "Wrong information!";
-            }
-        }
-        } else {
-            echo "No this user!";
-        }
-        return $judgement;
+    } else {
+      echo "No this user!";
     }
-      
-      //Academic Coordinator login
-      if($_POST['selectUser'] == 'academicCoordinator'){
-        $sql = "SELECT password FROM academicCoo WHERE academicCooID=$Id";
-        $result = $conn->query($sql);
-
-        if ($result->num_rows > 0){
-        // output data
-        while($row = $result->fetch_assoc()) {
-          if($row['password'] == $password){
-              echo "Login successfully!";
-              $judgement = TRUE;
-            }else{
-              echo "Wrong information!";
-            }
-        }
-        } else {
-            echo "No this user!";
-        }
-        return $judgement;
-    }
-      
-   
+   return $judgement;
 }
 
  ?>
