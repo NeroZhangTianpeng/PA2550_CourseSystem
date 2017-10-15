@@ -45,7 +45,7 @@
                                 <p>
                                     <label> Your identity </label></br>
                                     <label> 
-                                        <select name="selectUser" class="selectIdentity"> 
+                                        <select name="identity" class="selectIdentity"> 
                                             <option value="academicCoordinator">Academic Coordinator</option> 
                                             <option value="teacher">Teacher</option> 
                                             <option value="student">Student</option> 
@@ -55,7 +55,7 @@
                                     
                                 <p> 
                                     <label for="username" class="uname" data-icon="u" > Your ID </label>
-                                    <input id="Id" name="Id" required="required" type="text" placeholder="Your ID"/>
+                                    <input id="userId" name="userId" required="required" type="text" placeholder="Your ID"/>
                                 </p>
                                 <p> 
                                     <label for="password" class="youpasswd" data-icon="p"> Your password </label>

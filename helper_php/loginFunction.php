@@ -32,7 +32,8 @@
             }
     }
     } else {
-      echo "No this user!";
+//      echo "No this user!";
+       echo "<script>alert('No this user! Please contact academic teacher!')</script>";
     }
    return $judgement;
 }
