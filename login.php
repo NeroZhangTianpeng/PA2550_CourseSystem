@@ -1,18 +1,16 @@
 <?php
-  ob_start();
   session_start();
   include 'helper_php/loginFunction.php';
   if(isset($_POST['login'])){
-    if(ValidateCredentials($_POST['Id'],$_POST['password'])){
-      $_SESSION['Id']=$_POST['Id'];
-      //echo "<script>alert('Login successfully!')</script>";
-      header('Location:course.php');
-    }else {
-     // echo "<script>alert('Please check student ID and password!')</script>";
+      if(ValidateCredentials($_POST['userId'],$_POST['password'],$_POST['identity'])){
+        $_SESSION['userId']=$_POST['userId'];
+        //echo "<script>alert('Login successfully!')</script>";
+        header('Location:course.php');
+      }else {
+      //echo "<script>alert('Please check student ID and password!')</script>";
       //echo "check username and password";
+      }
     }
-  }
-
 ?>
 
 <!DOCTYPE html>
