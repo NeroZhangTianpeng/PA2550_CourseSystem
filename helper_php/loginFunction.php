@@ -1,10 +1,6 @@
 <?php
   include 'includes/db.php';
 
-
-
-
-
   function ValidateCredentials($Id,$password){
    global $conn;
    $judgement = FALSE;
@@ -17,14 +13,17 @@
         // output data
         while($row = $result->fetch_assoc()) {
           if($row['password'] == $password){
-              echo "Login successfully!";
+//              echo "Login successfully!";
+              echo "<script>alert('Login successfully')</script>";
               $judgement = TRUE;
             }else{
-              echo "Wrong information!";
+//              echo "Wrong information!";
+              echo "<script>alert('Id or password is wrong!')</script>";
             }
         }
         } else {
-            echo "No this user!";
+//            echo "No this user!";
+            echo "<script>alert('No this user! Please contact academic office!')</script>";
         }
         return $judgement;
     }
@@ -38,14 +37,17 @@
         // output data
         while($row = $result->fetch_assoc()) {
           if($row['password'] == $password){
-              echo "Login successfully!";
+//              echo "Login successfully!";
+              echo "<script>alert('Login successfully')</script>";
               $judgement = TRUE;
             }else{
-              echo "Wrong information!";
+//              echo "Wrong information!";
+              echo "<script>alert('Id or password is wrong!')</script>";
             }
         }
         } else {
-            echo "No this user!";
+//            echo "No this user!";
+            echo "<script>alert('No this user! Please contact academic office!')</script>";
         }
         return $judgement;
     }
@@ -59,14 +61,17 @@
         // output data
         while($row = $result->fetch_assoc()) {
           if($row['password'] == $password){
-              echo "Login successfully!";
+//              echo "Login successfully!";
+              echo "<script>alert('Login successfully')</script>";
               $judgement = TRUE;
             }else{
-              echo "Wrong information!";
+//              echo "Wrong information!";
+              echo "<script>alert('Id or password is wrong!')</script>";
             }
         }
         } else {
-            echo "No this user!";
+//            echo "No this user!";
+            echo "<script>alert('No this user! Please contact academic office!')</script>";
         }
         return $judgement;
     }
