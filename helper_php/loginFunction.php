@@ -21,14 +21,17 @@
     // 输出数据
       while($row = $result->fetch_assoc()) {
           if($row['password'] == $password){
-              echo "Login successfully!";
+//              echo "Login successfully!";
+//               echo "<script>alert('dfsf');</script>";
               $judgement = TRUE;
             }else{
-              echo "Wrong information!";
+//              echo "Wrong information!";
+               echo "<script>alert('Id or password is wrong!');</script>";
             }
     }
     } else {
-      echo "No this user!";
+//      echo "No this user!";
+        echo "<script>alert('No this user! Please contact academic coordinator!');</script>";
     }
    return $judgement;
 }
