@@ -79,7 +79,7 @@ if($conn->query($sql) == TRUE){
 //Test data for course table
 $sql = "INSERT INTO `course`
        (`courseId`, `courseName`, `courseState`, `courseFee`, `courseTeacher`, `courseCredit` , `Pre-requisiteCourse`)
-       VALUES (001, 'math1', 'COMPULSORY' , '1000' , 'TOM' , '2' , NULL)";
+       VALUES (001, 'math1', 'COMPULSORY' , '1000' , 'Tom' , '2' , NULL)";
 if ($conn->query($sql) === TRUE) {
    echo "Inserted DATA course successfully</br>";
 } else {
@@ -88,7 +88,7 @@ if ($conn->query($sql) === TRUE) {
 
 $sql = "INSERT INTO `course`
        (`courseId`, `courseName`, `courseState`, `courseFee`, `courseTeacher`, `courseCredit` , `Pre-requisiteCourse`)
-       VALUES (002, 'math2', 'COMPULSORY' , '1000' , 'TOM' , '2' , '001')";
+       VALUES (002, 'math2', 'COMPULSORY' , '1000' , 'Tom' , '2' , '001')";
 if ($conn->query($sql) === TRUE) {
    echo "Inserted DATA course successfully</br>";
 } else {
@@ -97,7 +97,16 @@ if ($conn->query($sql) === TRUE) {
 
 $sql = "INSERT INTO `course`
        (`courseId`, `courseName`, `courseState`, `courseFee`, `courseTeacher`, `courseCredit` , `Pre-requisiteCourse`)
-       VALUES (003, 'math3', 'COMPULSORY' , '1000' , 'TOM' , '3' , '002')";
+       VALUES (003, 'math3', 'COMPULSORY' , '1000' , 'Tom' , '2' , '002')";
+if ($conn->query($sql) === TRUE) {
+   echo "Inserted DATA course successfully</br>";
+} else {
+   echo "Error inserting data into course table: " . $conn->error . "</br>";
+}
+
+$sql = "INSERT INTO `course`
+       (`courseId`, `courseName`, `courseState`, `courseFee`, `courseTeacher`, `courseCredit` , `Pre-requisiteCourse`)
+       VALUES (004, 'English1', 'COMPULSORY' , '1000' , 'Jerry' , '3' , NULL)";
 if ($conn->query($sql) === TRUE) {
    echo "Inserted DATA course successfully</br>";
 } else {

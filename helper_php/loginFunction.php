@@ -7,6 +7,7 @@
    $judgement = FALSE;
 
    $sql = "SELECT password FROM student WHERE studentID=$studentId";
+   
    $result = $conn->query($sql);
 
    if ($result->num_rows > 0){
@@ -24,11 +25,6 @@
     }
 
 
-   echo '</br>';
-   echo $password;
-   echo '</br>';
-   echo $studentId;
-   echo '</br>';
    //
   //  $passwordRes = array();
   //  $j = 0;
