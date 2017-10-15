@@ -7,7 +7,7 @@
   if(isset($_POST['submit'])){
   	$courseId=$_POST['courseId'];
   	
-  	$studentId=$_SESSION['studentId'];
+  	$studentId=$_SESSION['userId'];
   	//echo $courseId;
   	//echo $studentId;
   	$sql = "select * from student_course where courseId = '".$courseId."' and studentId = '".$studentId."'";

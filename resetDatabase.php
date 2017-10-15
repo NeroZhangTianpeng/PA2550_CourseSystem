@@ -11,7 +11,7 @@ error_reporting(E_ALL);
 //create a connection
 $serverName = "localhost";
 $userName = "root";
-$password = "134679";
+$password = "";
 // Create connection
 $conn = mysqli_connect($serverName, $userName, $password);
 // Check connection
