@@ -5,8 +5,6 @@
   function ValidateCredentials($userId,$password,$identity){
    global $conn;
    $judgement = FALSE;
-   $condition1 = "student";
-   $condition2 = "teacher";
    $sql1= "SELECT password FROM student WHERE studentId=$userId";
    $sql2= "SELECT password FROM teacher WHERE teacherId=$userId";
    $sql3= "SELECT password FROM academicCoordinator WHERE academicCoordinatorId=$userId";
@@ -23,17 +21,14 @@
     // 输出数据
       while($row = $result->fetch_assoc()) {
           if($row['password'] == $password){
-//              echo "Login successfully!";
-              echo "<script>alert('Login successfully')</script>";
+              echo "Login successfully!";
               $judgement = TRUE;
             }else{
-//              echo "Wrong information!";
-              echo "<script>alert('Id or password is wrong!')</script>";
+              echo "Wrong information!";
             }
     }
     } else {
-//      echo "No this user!";
-       echo "<script>alert('No this user! Please contact academic teacher!')</script>";
+      echo "No this user!";
     }
    return $judgement;
 }
