@@ -1,5 +1,5 @@
-ob_start();
- <?php
+<?php
+  ob_start();
   session_start();
   include 'helper_php/loginFunction.php';
   if(isset($_POST['login'])){
