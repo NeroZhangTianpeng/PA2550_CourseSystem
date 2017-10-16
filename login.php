@@ -6,7 +6,7 @@
       if(ValidateCredentials($_POST['userId'],$_POST['password'],$_POST['identity'])){
         $_SESSION['userId']=$_POST['userId'];
         //echo "<script>alert('Login successfully!')</script>";
-        header('Location:course.php');
+        header('Location:index.php');
       }else {
       //echo "<script>alert('Please check student ID and password!')</script>";
       //echo "check username and password";
