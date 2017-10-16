@@ -6,7 +6,14 @@
       if(ValidateCredentials($_POST['userId'],$_POST['password'],$_POST['identity'])){
         $_SESSION['userId']=$_POST['userId'];
         //echo "<script>alert('Login successfully!')</script>";
-        header('Location:index.php');
+          if($_POST['identity'] == 'academicCoordinator'){
+              header('Location:indexAcademic.php');
+          }else if($_POST['identity'] == 'student'){
+                header('Location:indexStu.php');      
+          }else if($_POST['identity'] == 'teacher'){
+              header('Location:indexTea.php');
+          }
+        
       }else {
       //echo "<script>alert('Please check student ID and password!')</script>";
       //echo "check username and password";
