@@ -10,8 +10,8 @@
   	$studentId=$_SESSION['userId'];
   	//echo $courseId;
   	//echo $studentId;
-  	$sql = "select * from student_course where courseId = '".$courseId."' and studentId = '".$studentId."'";
-    $result1=$conn->query($sql);
+  	$sql1 = "select * from student_course where courseId = '".$courseId."' and studentId = '".$studentId."'";
+    $result1=$conn->query($sql1);
     
   	if(mysqli_num_rows($result1)){
       echo "<script>alert('You have selected this course')</script>";
@@ -106,6 +106,28 @@
 
 <p>Course System</p>
 <p> Register compulsory courses</p>
+<table>
+	<?php 
+	$choice = "AllCourse";
+	if(isset($_POST['choose'])){
+		$choice = $_POST['choice'];
+		$_SESSION['choice'] = $_POST['choice'];
+	}
+	?>
+	<form method="post">
+		<tr>
+			<td>
+				<select name="choice">
+
+				  <option value ="AllCourse" <?php if($choixe == "AllCourse"){ ?>selected="selected"<?php } ?>>All Courses</option>
+				  <option value ="COMPULSORY" <?php if($choice == "COMPULSORY"){ ?>selected="selected"<?php } ?>>Compulsory Courses</option>
+				  <option value ="ELECTIVE" <?php if($choice == "ELECTIVE"){ ?>selected="selected"<?php } ?>>Elective Courses</option>
+				</select>
+			</td>
+			<td><input type="submit" name="choose" id="choose" value="choose"></td>
+		</tr>
+	</form>	
+</table>
 <table border=1>
     <thead>
     <tr>
@@ -120,7 +142,11 @@
     </thead>
     <tbody>
 
-    <?php foreach ($result as $row) {
+    <?php 
+	
+
+	//$resultCourse = courseShow("",$conn);
+	foreach (courseShow($choice,$conn) as $row) {
         echo "<tr><td>".$row['courseId']."</td><td>".$row['courseName']."</td><td>".$row['courseState']."</td><td>".$row['courseFee']."</td><td>".$row['courseTeacher']."</td><td>".$row['courseCredit']."</td><td>".$row['Pre-requisiteCourse']."</td></tr>";
     } ?>
 
