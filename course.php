@@ -106,6 +106,7 @@
 
 <p>Course System</p>
 <p> Register compulsory courses</p>
+<a href="index.php">BACK</a>
 <table border=1>
     <thead>
     <tr>

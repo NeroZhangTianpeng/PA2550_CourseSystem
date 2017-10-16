@@ -1,1 +1,23 @@
-<a href="course.php">Choose Course</a>
+<html>
+<head>
+   <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <title>Course System - BTH - PA2550 - Group2</title> 
+</head>
+
+
+<body>
+   <h1>Course System</h1>
+   <div class="divForLeft">
+       <p class="divTitle">Course Management</p>
+       <li><a href="course.php">Choose Course</a></li>
+       <li><a href="#">Course Information</a></li>
+   </div>
+   <div class="divForRight">
+       <p class="divTitle">Personal Information</p>
+       <li><a href="#">Tuition Fee</a></li>
+       <li><a href="#">Exam Schedule</a></li>
+   </div>
+
+<!--    <a href="course.php">Choose Course</a>    -->
+</body>
+</html>
