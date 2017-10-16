@@ -112,7 +112,7 @@ if ($conn->query($sql) === TRUE) {
 }
 //Courses Table
 $sql = "CREATE TABLE `courseSystem`.`course`
-          (`courseId` INT NOT NULL AUTO_INCREMENT, `courseName` VARCHAR(255) NOT NULL, `courseState` VARCHAR(255) NOT NULL, `courseFee` INT NOT NULL, `courseTeacher` VARCHAR(255) NOT NULL, `courseCredit` INT NOT NULL, `Pre-requisiteCourse` INT, PRIMARY KEY (`courseId`)) ENGINE = MyISAM;";
+          (`courseId` INT NOT NULL AUTO_INCREMENT, `courseName` VARCHAR(255) NOT NULL, `courseState` VARCHAR(255) NOT NULL, `courseFee` INT NOT NULL, `courseTeacher` VARCHAR(255) NOT NULL, `courseCredit` INT NOT NULL, `Pre-requisiteCourse` VARCHAR(255), PRIMARY KEY (`courseId`)) ENGINE = MyISAM;";
 if($conn->query($sql) == TRUE){
   echo "TABLE course created successfully</br>";
 } else{

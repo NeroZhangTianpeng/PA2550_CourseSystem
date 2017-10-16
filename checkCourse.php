@@ -8,6 +8,29 @@
    
 <body>
    <h1>Course System</h1>   
+<!--   add course-->
+   <div class="divForOperateCourse">
+      <div class="divForAddCourse">
+      <p>Add Course</p>
+       <form action="addCourse.php" method="post" name="AddCourse">
+           <input type="text" name="courseName" id="courseName" placeholder="course name" autofocus/></br>
+           <input type="text" name="courseState" id="courseState" placeholder="course state"/></br>
+           <input type="text" name="courseTeacher" id="courseTeacher" placeholder="course teacher"/></br>
+           <input type="text" name="preCourse" id="preCourse" placeholder="pre-requisite course"/></br>
+           <input type="number" min="100" name="courseFee" id="courseFee" placeholder="course fee"/></br>
+           <input type="number" min="1" max="8" name="courseCredit" id="courseCredit" placeholder="course credits"/></br>
+           <input type="submit" name="Add course" value="Submit" class="inputButton"/> 
+       </form>
+   </div>
+       <div class="divForDeleteCourse">
+          <p>Delete Course</p>
+           <form action="deleteCourse.php" method="post" name="DeleteCourse">
+           <input type="text" name="courseId" id="courseId" placeholder="course Id" autofocus/></br>
+           <input type="submit" name="Delete course" value="Submit"  class="inputButton"/> 
+       </form>
+       </div>
+   </div>
+    
    
    <div class="divForTable">
        <table border=1>

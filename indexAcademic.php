@@ -10,9 +10,7 @@
    <a href="login.php" class="aForLogout">Logout</a>
    <div class="divForLeft">
        <p class="divTitle">Course Management</p>
-       <li><a href="checkCourse.php">Check All Courses</a></li>
-       <li><a href="course.php">Add Course</a></li>
-       <li><a href="#">Delete Course</a></li>
+       <li><a href="checkCourse.php">Operate Courses</a></li>
    </div>
    <div class="divForRight">
        <p class="divTitle">Student Information</p>
