@@ -50,7 +50,7 @@ if(isset($_POST['submit'])){
 	<input type="submit" name="submit" value="submit">
 	<input type="reset" name="reset" value="reset">
 </form>
-<br><a href=coursefolder.php>courseFolder</a>
+<br><a href=courseFolder.php>courseFolder</a>
 
 </body>
 </html>
