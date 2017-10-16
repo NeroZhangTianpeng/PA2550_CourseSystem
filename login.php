@@ -5,6 +5,7 @@
   if(isset($_POST['login'])){
       if(ValidateCredentials($_POST['userId'],$_POST['password'],$_POST['identity'])){
         $_SESSION['userId']=$_POST['userId'];
+        $_SESSION['identity']=$_POST['identity'];
         //echo "<script>alert('Login successfully!')</script>";
           if($_POST['identity'] == 'academicCoordinator'){
               header('Location:indexAcademic.php');
