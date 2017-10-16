@@ -79,3 +79,28 @@ a{
     float: right;
     margin-right: 6%;
 }
+
+.divForTable{
+    text-align: center;
+    margin-left: 22%;
+}
+
+table{
+    text-align: center;
+    border: 2px solid black;
+    margin-top: -2%;
+}
+
+thead{
+    font-family: -webkit-pictograph;
+    font-weight: bolder;
+    font-size: 1.2em;
+    background-color: rgba(231,229,178,0.53);
+}
+
+.aForBack{
+    float: right;
+    margin-right: 22%;
+    margin-top: 10%;
+}
+
