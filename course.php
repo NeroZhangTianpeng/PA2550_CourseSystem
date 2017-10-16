@@ -106,6 +106,7 @@
 
 <p>Course System</p>
 <p> Register compulsory courses</p>
+<a href="indexStu.php">BACK</a>
 <table>
 	<?php 
 	$choice = "AllCourse";
