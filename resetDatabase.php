@@ -195,6 +195,14 @@ if ($conn->query($sql) === TRUE) {
 } else {
    echo "Error inserting data into student_course table: " . $conn->error . "</br>";
 }
+//CourseFolder
+$sql = "CREATE TABLE `courseSystem`.`courseFolder`
+          (`id` INT NOT NULL AUTO_INCREMENT, `name` VARCHAR(80) NOT NULL, `type` VARCHAR(80) NOT NULL, `size` INT NOT NULL, `content` longblob NOT NULL, `courseId` INT NOT NULL, PRIMARY KEY (`id`)) ENGINE = MyISAM;";
+if($conn->query($sql) == TRUE){
+  echo "TABLE courseFolder created successfully</br>";
+} else{
+  echo "Error creating TABLE courseFolder: " . $conn->error . "</br>";
+}
 //close the connection
 $conn->close();
 ?>
