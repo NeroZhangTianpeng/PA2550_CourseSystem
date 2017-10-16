@@ -10,7 +10,7 @@
     		
     		$sql2 = "SELECT student_course.courseId, student_course.mark,
     						course.courseName,course.courseState,course.courseFee,
-    						course.courseTeacher,
+    						course.courseTeacher,course.timeOfExam,
     						course.courseCredit,course.`Pre-requisiteCourse`
 							
     				FROM student_course,course 
@@ -56,6 +56,7 @@
                     "</td><td>CourseState: </td><td>" .$row['courseState'].
                     "</td><td>CourseFee: </td><td>" .$row['courseFee'].
                     "</td><td>CourseTeacher: </td><td>" .$row['courseTeacher'].
+					"</td><td>TimeOfExam: </td><td>".$row['timeOfExam'].
                     "</td><td>CourseCredit: </td><td>" .$row['courseCredit'].
                     "</td><td>Pre-requisiteCourse: </td><td>" .$row['Pre-requisiteCourse'].
                     "</td></tr>";
@@ -66,5 +67,8 @@
 				
 			
 		</table>
+		<div>
+       		<a href="indexAcademic.php" class="aForBack">BACK</a> 
+   		</div>
 	</body>
 </html>
