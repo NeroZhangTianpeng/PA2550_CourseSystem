@@ -2,9 +2,10 @@
 session_start();
     include 'helper_php/loginFunction.php';
     global $conn;
-    //$courseId=$_SESSION['courseId'];
-    //$sql =  "select * from courseFolder where courseId='".$courseId."'";
-    $sql =  "select * from courseFolder";
+    $courseId=$_SESSION['courseId'];
+    if(!($_SESSION['courseId'])) die("error:  please choose a course! ");
+    $sql =  "select * from courseFolder where courseId='".$courseId."'";
+    //$sql =  "select * from courseFolder";
     $result = $conn->query($sql);
     if(!$result) die(" error: mysql query");
     $name = array();
@@ -32,4 +33,5 @@ session_start();
     }
     $i++;
     }
+    echo "<br><a href=indexTea.php>back to index</a>";
 ?>

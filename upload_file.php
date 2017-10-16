@@ -9,7 +9,7 @@ if(isset($_POST['submit'])){
 		$size = $_FILES['file']['size'];
 		$name = $_FILES['file']['name'];
 		$type = $_FILES['file']['type'];
-		$courseId = $_POST['courseId'];
+		$courseId = $_SESSION['courseId'];
 		if($size < 2048000 && $size > 0)//small than 2mb
 		{
 			if($error == UPLOAD_ERR_OK)
@@ -46,7 +46,6 @@ if(isset($_POST['submit'])){
 <form action="upload_file.php" method="post" enctype="multipart/form-data">
 	<label for="file">file name: </label>
 	<input type="file" name="file" id="file"><br>
-	courseId<input type="text" id="courseId" name="courseId" placeholder="courseId">
 	<input type="submit" name="submit" value="submit">
 	<input type="reset" name="reset" value="reset">
 </form>
