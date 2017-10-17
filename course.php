@@ -1,5 +1,7 @@
 <?php session_start(); ?>
 <html>
+<body background="images/bg.jpg">
+<center>
 <?php
   include 'helper_php/courseFunction.php';
   include 'includes/db.php';
@@ -11,12 +13,16 @@
   	//echo $courseId;
   	//echo $studentId;
   	$sql1 = "select * from student_course where courseId = '".$courseId."' and studentId = '".$studentId."'";
+	$sql1_1 = "select * from course where courseId = '".$courseId."'";
     $result1=$conn->query($sql1);
+	$result1_1 = $conn->query($sql1_1);
     
   	if(mysqli_num_rows($result1)){
       echo "<script>alert('You have selected this course')</script>";
     }
+	else if(!mysqli_num_rows($result1_1)){echo "<script>alert('There is no this course')</script>";}
   	else {
+	  
       $sql2 = "select courseId from student_course where studentId = '".$studentId."'";
       $result2 = $conn->query($sql2);
       while($row2=$result2->fetch_array()){
@@ -105,8 +111,7 @@
 ?>
 
 <p>Course System</p>
-<p> Register compulsory courses</p>
-<a href="indexStu.php">BACK</a>
+<p> Register courses</p>
 <table>
 	<?php 
 	$choice = "AllCourse";
@@ -162,7 +167,8 @@
 	</tr>
 </table>
 </form>
-
+<a href="indexStu.php">BACK</a>
+</center>
 </body>
 </html>
 
