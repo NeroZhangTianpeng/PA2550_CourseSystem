@@ -19,8 +19,8 @@
    </div>
    <div class="divForRight">
        <p class="divTitle">Personal Information</p>
-       <li><a href="#">Tuition Fee</a></li>
-       <li><a href="#">Exam Schedule</a></li>
+       <li><a href="showFeeForStu.php">Tuition Fee</a></li>
+       <li><a href="showExamSchedule.php">Exam Schedule</a></li>
    </div>
 
 <!--    <a href="course.php">Choose Course</a>    -->
