@@ -120,7 +120,7 @@
 			<td>
 				<select name="choice">
 
-				  <option value ="AllCourse" <?php if($choixe == "AllCourse"){ ?>selected="selected"<?php } ?>>All Courses</option>
+				  <option value ="AllCourse" <?php if($choice == "AllCourse"){ ?>selected="selected"<?php } ?>>All Courses</option>
 				  <option value ="COMPULSORY" <?php if($choice == "COMPULSORY"){ ?>selected="selected"<?php } ?>>Compulsory Courses</option>
 				  <option value ="ELECTIVE" <?php if($choice == "ELECTIVE"){ ?>selected="selected"<?php } ?>>Elective Courses</option>
 				</select>
