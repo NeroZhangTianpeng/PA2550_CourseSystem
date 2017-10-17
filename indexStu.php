@@ -15,7 +15,7 @@
        <p class="divTitle">Course Management</p>
        <li><a href="course.php">Choose Course</a></li>
        <li><a href="showStudentInfoForStu.php">Course Information</a></li>
-       <li><a href="courseFolder.php">course folder</a></li>
+       <li><a href="showFileInfo.php">course folder</a></li>
    </div>
    <div class="divForRight">
        <p class="divTitle">Personal Information</p>
