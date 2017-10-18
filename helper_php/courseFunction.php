@@ -21,6 +21,27 @@
 	  }
 	  return $result;
   }
+
+function addExamInfo($startTimeOfExam,$finishTimeOfExam,$roomOfExam,$courseId){
+    global $conn;
+    
+    $sql = "UPDATE course SET startTimeOfExam = '$startTimeOfExam', finishTimeOfExam = '$finishTimeOfExam' , roomOfExam = '$roomOfExam' WHERE courseId = '$courseId'";
+    
+    $result = $conn -> query($sql);
+    
+    if(isset($result)){
+        return true;
+    }else return false;
+    
+}
   
+function getRowNum($conn){
+     $sql = "SELECT * from course";
+	  
+    $rowNum = mysqli_num_rows($conn->query($sql));
+    
+    return $rowNum;
+
+}
   
- ?>
+ ?> 
