@@ -4,12 +4,26 @@
   global $conn;
   $teacherId = $_SESSION['userId'];
   $sql =  "select courseId from teacher where teacherId='".$teacherId."'";
+     
   $result = $conn->query($sql);
   if(!$result) die(" error: mysql query");
     while($rows = $result->fetch_assoc()){
     $courseId = $rows['courseId'];
     $_SESSION['courseId'] = $courseId;
   }
+
+    $sql2 = "SELECT * FROM course WHERE `courseId` = '$courseId'"; 
+    $result2 = $conn -> query($sql2);
+    if(!$result2) die(" error: mysql query");
+    while($rows2 = $result2->fetch_assoc()){
+        $courseName = $rows2['courseName'];
+//        echo $courseName;
+        $_SESSION['courseName'] = $courseName;
+//        echo $_SESSION['courseName'];
+  }
+//echo $courseName . $courseId;
+//echo $_SESSION['courseName'];
+
 ?>
 <html>
 <head>
@@ -26,8 +40,8 @@
 
    <div class="divForLeft">
        <p class="divTitle">Course Management</p>
-       <li><a href="upload_file.php">Upload File</a></li>
-       <li><a href="courseFolder.php">CourseFolder</a></li>
+       <li><a href=upload_file.php><?php echo $_SESSION['courseName'];?></a></li>
+
    </div>
    <div class="divForRight">
        <p class="divTitle">Personal Information</p>

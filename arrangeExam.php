@@ -8,7 +8,6 @@
 <center>
 <?php
   include 'helper_php/courseFunction.php';
-  include 'helper_php/addExamInfo.php';
   include 'includes/db.php';
   
     if(isset($_POST['submit'])){
@@ -34,7 +33,7 @@
                 echo "<script>alert('Successfully!')</script>";
                 echo "<meta http-equiv=refresh content='0; url=checkExam.php'>"; 
             }else{
-//                echo "<script>alert('Wrong')</script>";
+                echo "<script>alert('Someting Wrong! Please contact technical staff!')</script>";
             }
         }
         
