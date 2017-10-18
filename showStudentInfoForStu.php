@@ -45,9 +45,6 @@
 						<td>CourseTeacher</td>
 						<td>CourseCredit</td>
 						<td>Pre-requisiteCourse</td>
-						<td>Start Time of Exam</td>
-						<td>Finish Time of Exam</td>
-						<td>Room of exam</td>
 						<td>CourseMark</td>
 					</tr>
 				</thead>
@@ -60,9 +57,6 @@
                     			"</td><td>" .$row['courseTeacher'].
                    				"</td><td>" .$row['courseCredit'].
 								"</td><td>".$row['Pre-requisiteCourse'].
-                    			"</td><td>" .$row['startTimeOfExam'].
-                    			"</td><td>" .$row['finishTimeOfExam'].
-                    			"</td><td>" .$row['roomOfExam'].
                     			"</td><td>" .$row['mark'].
                     			"</td></tr>";
                 		}
