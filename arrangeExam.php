@@ -65,7 +65,7 @@
 	$countCourse = 0;
         
 	//$resultCourse = courseShow("",$conn);
-	foreach (courseShow(NULL,$conn) as $row) {
+	foreach (courseShow(NULL,NULL,$conn) as $row) {
         echo "<tr><td>".$row['courseId']."</td><td>".$row['courseName']."</td><td>".$row['courseState']."</td><td>".$row['courseFee']."</td><td>".$row['courseTeacher']."</td><td>".$row['courseCredit']."</td><td>".$row['Pre-requisiteCourse']."</td>";
         
         $startTimeOfExam = "startTime" . $row['courseId'];
