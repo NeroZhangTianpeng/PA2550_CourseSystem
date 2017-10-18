@@ -9,14 +9,14 @@
     				FROM student WHERE studentId = $studentId";
     		
    $sql2 = "SELECT student_course.courseId, student_course.mark,
-    						course.courseName,course.courseState,course.courseFee,
-    						course.courseTeacher,course.timeOfExam,
-    						course.courseCredit,course.`Pre-requisiteCourse`
-							
-    				FROM student_course,course 
-    				WHERE course.courseId=student_course.courseId AND course.courseId = any(SELECT student_course.courseId
-    							FROM student_course
-    							WHERE studentId = $studentId)";
+    		course.courseName,course.courseState,course.courseFee,
+    		course.courseTeacher,course.timeOfExam,
+    		course.courseCredit,course.`Pre-requisiteCourse`			
+    	FROM student_course,course 
+    	WHERE course.courseId=student_course.courseId AND course.courseId = 
+	any(SELECT student_course.courseId
+    		FROM student_course
+    		WHERE studentId = $studentId)";
 	
 ?>
 <head>
@@ -46,19 +46,18 @@
 				</thead>
 				<tbody>";
 				while ($row = $result2->fetch_assoc()) {
-                     echo "<tr><td>" .$row['courseId']. 
-                    "</td><td>" .$row['courseName']. 
-                    "</td><td>" .$row['courseState'].
-                    "</td><td>" .$row['courseFee'].
-                    "</td><td>" .$row['courseTeacher'].
-                    "</td><td>" .$row['courseCredit'].
+                     			echo "<tr><td>" .$row['courseId']. 
+                    			"</td><td>" .$row['courseName']. 
+                    			"</td><td>" .$row['courseState'].
+                    			"</td><td>" .$row['courseFee'].
+                    			"</td><td>" .$row['courseTeacher'].
+                   			"</td><td>" .$row['courseCredit'].
 					"</td><td>".$row['Pre-requisiteCourse'].
-                    "</td><td>" .$row['timeOfExam'].
-                    "</td><td>" .$row['mark'].
-                    "</td></tr>";
-                }
-                echo "</tbody>";
-				
+                    			"</td><td>" .$row['timeOfExam'].
+                    			"</td><td>" .$row['mark'].
+                    			"</td></tr>";
+                		}
+                		echo "</tbody>";	
 			?>
 	</table>
 	<div>
