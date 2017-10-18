@@ -39,7 +39,7 @@ h1:after{
 thead{
     font-family: -webkit-pictograph;
     font-weight: bolder;
-    font-size: 0.9em;
+    font-size: 1.2em;
     background-color: rgba(231,229,178,0.53);
 }
 
@@ -67,4 +67,9 @@ p{
     float: right;
     margin-right: 15%;
     margin-top: 5%;
+}
+
+.divForShow{
+    margin-left: 20%;
+    margin-top: -3%;
 }
