@@ -1,5 +1,12 @@
 <?php session_start(); ?>
 <html>
+<head>
+<!--    <link rel="stylesheet" type="text/css" href="css/index.css" />-->
+    <link rel="stylesheet" type="text/css" href="css/showInfo.css" />
+    <title>Course System - BTH - PA2550 - Group2</title> 
+</head>
+	<body>
+		<h1>Course System</h1>
 <?php
   include 'includes/db.php';
 
@@ -24,11 +31,8 @@
     				WHERE studentId = $studentId)";
     				
 ?>
-<head>
-	<title>Student File Information</title>
-</head>
-<body>
-	<table border=1>
+<div class="divForShow">
+    <table border=1>
 	<?php
 				$result = $conn->query($sql);
 				while ($row = $result->fetch_assoc()) {
@@ -64,6 +68,8 @@
 				
 			?>
 	</table>
+</div>
+	
 	<div>
        <a href="indexStu.php" class="aForBack">BACK</a> 
    </div>
