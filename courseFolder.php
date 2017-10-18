@@ -5,8 +5,12 @@ session_start();
     $courseId=$_SESSION['courseId'];
     if(!($_SESSION['courseId'])) die("error:  please choose a course! ");
     $sql =  "select * from courseFolder where courseId='".$courseId."'";
+    $sql1 =  "select courseName from course where courseId='".$courseId."'";
     //$sql =  "select * from courseFolder";
     $result = $conn->query($sql);
+    $result1 = $conn->query($sql1);
+    $row1 = $result1->fetch_assoc();
+    $courseName = $row1['courseName'];
     if(!$result) die(" error: mysql query");
     $name = array();
     $type = array();
@@ -26,12 +30,15 @@ session_start();
     echo "<br>The file's type - $type[$i]";
     echo "<br>The file's size - $size[$i]";
     echo "<br>The file's id - $ID";
-    echo "<br>The file's course id - $courseId[$i]";
+    echo "<br>The file belongs to - $courseName";
     echo "<br><a href=download.php?id=$ID>Download Link</a>";
     if($_SESSION['identity']=="teacher"){
         echo "<br><a href=delete.php?id=$ID>Delete</a>";
     }
     $i++;
+    }
+    if($_SESSION['identity']=="teacher"){
+        echo "<br><a href=upload_file.php>upload file</a>";
     }
     echo "<br><a href=indexTea.php>back to index</a>";
 ?>

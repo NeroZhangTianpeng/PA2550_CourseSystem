@@ -1,10 +1,15 @@
 <?php
   include 'includes/db.php';
-  function courseShow($choice = NULL, $conn){
+  function courseShow($choice = NULL, $searchId = NULL, $conn){
 	  $sql = "SELECT * from course";
 	  $sqlCom = "SELECT * FROM course WHERE `courseState` = 'COMPULSORY'";
 	  $sqlEle = "SELECT * FROM course WHERE `courseState` = 'ELECTIVE'";
-	  if($choice == "COMPULSORY"){
+	  $sqlId ="SELECT * FROM course WHERE `courseId` = '".$searchId."'";
+	  
+	  if($searchId != NULL){
+	  	$sql = $sqlId;
+	  }
+	  else if($choice == "COMPULSORY"){
 		  $sql = $sqlCom;
 	  }
 	  else if($choice == "ELECTIVE"){

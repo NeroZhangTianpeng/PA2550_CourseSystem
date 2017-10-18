@@ -13,9 +13,9 @@
   	//echo $courseId;
   	//echo $studentId;
   	$sql1 = "select * from student_course where courseId = '".$courseId."' and studentId = '".$studentId."'";
-	$sql1_1 = "select * from course where courseId = '".$courseId."'";
+	  $sql1_1 = "select * from course where courseId = '".$courseId."'";
     $result1=$conn->query($sql1);
-	$result1_1 = $conn->query($sql1_1);
+	  $result1_1 = $conn->query($sql1_1);
     
   	if(mysqli_num_rows($result1)){
       echo "<script>alert('You have selected this course')</script>";
@@ -115,10 +115,14 @@
 <table>
 	<?php 
 	$choice = "AllCourse";
+  $searchId = NULL;
 	if(isset($_POST['choose'])){
 		$choice = $_POST['choice'];
 		$_SESSION['choice'] = $_POST['choice'];
 	}
+  if(isset($_POST['search'])){
+    $searchId = $_POST['searchId'];
+  }
 	?>
 	<form method="post">
 		<tr>
@@ -134,6 +138,15 @@
 		</tr>
 	</form>	
 </table>
+<form method="post">
+  <table>
+    <tr>
+      <td>CourseId:</td>
+      <td><input type="text" name="searchId"></td>
+      <td><input type="submit" name="search" value="search"></td>
+    </tr>
+  </table>
+</form>
 <table border=1>
     <thead>
     <tr>
@@ -152,7 +165,7 @@
 	
 
 	//$resultCourse = courseShow("",$conn);
-	foreach (courseShow($choice,$conn) as $row) {
+	foreach (courseShow($choice, $searchId, $conn) as $row) {
         echo "<tr><td>".$row['courseId']."</td><td>".$row['courseName']."</td><td>".$row['courseState']."</td><td>".$row['courseFee']."</td><td>".$row['courseTeacher']."</td><td>".$row['courseCredit']."</td><td>".$row['Pre-requisiteCourse']."</td></tr>";
     } ?>
 
