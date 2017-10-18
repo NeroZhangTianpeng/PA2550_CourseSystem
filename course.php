@@ -165,9 +165,20 @@
 	
 
 	//$resultCourse = courseShow("",$conn);
-	foreach (courseShow($choice, $searchId, $conn) as $row) {
+  $r = courseShow($choice, $searchId, $conn);
+  if(mysqli_num_rows($r) != 0){
+    foreach ($r as $row) {
         echo "<tr><td>".$row['courseId']."</td><td>".$row['courseName']."</td><td>".$row['courseState']."</td><td>".$row['courseFee']."</td><td>".$row['courseTeacher']."</td><td>".$row['courseCredit']."</td><td>".$row['Pre-requisiteCourse']."</td></tr>";
-    } ?>
+    }
+  }
+  else{
+    echo "<script>alert('No this course!')</script>";
+    $r = courseShow($choice, NULL, $conn);
+    foreach ($r as $row) {
+        echo "<tr><td>".$row['courseId']."</td><td>".$row['courseName']."</td><td>".$row['courseState']."</td><td>".$row['courseFee']."</td><td>".$row['courseTeacher']."</td><td>".$row['courseCredit']."</td><td>".$row['Pre-requisiteCourse']."</td></tr>";
+    }
+  }
+	 ?>
 
     </tbody>
 </table>
