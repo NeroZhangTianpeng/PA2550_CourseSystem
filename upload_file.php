@@ -10,24 +10,30 @@ if(isset($_POST['submit'])){
 		$name = $_FILES['file']['name'];
 		$type = $_FILES['file']['type'];
 		$courseId = $_SESSION['courseId'];
-		if($size < 2048000 && $size > 0)//small than 2mb
+		if($size < 16384000 && $size > 0)//small than 16mb
 		{
-			if($error == UPLOAD_ERR_OK)
-			{
-				$fp = fopen($tmp_name, 'r');
-				$content = fread($fp, $size);
-				fclose($fp);
-				$content = addslashes($content);
-				$sql = "INSERT INTO courseFolder (name, type, size, content,courseId)" . " VALUES ('$name', '$type', $size, '$content','$courseId')";
-				$conn->query($sql);
-				echo("File stored.\n");
-				header('Location:courseFolder.php');
-			}else{
-				echo("Database Save for upload failed.\n");
-			}
+            if($type == "image/jpeg" || $type == "image/jpg" || $type == "image/png" || $type == "image/gif")
+            {
+                echo"<script>alert('Uploading pictures is not supported!')</script>";
+            }
+             else{
+                if($error == UPLOAD_ERR_OK)
+                {
+				    $fp = fopen($tmp_name, 'r');
+				    $content = fread($fp, $size);
+				    fclose($fp);
+				    $content = addslashes($content);
+				    $sql = "INSERT INTO courseFolder (name, type, size, content,courseId)" . " VALUES ('$name', '$type', $size, '$content','$courseId')";
+				    $conn->query($sql);
+				    echo("File stored.\n");
+				    header('Location:courseFolder.php');
+                }else{
+                    echo"<script>alert('Database Save for upload failed!')</script>";
+                }
+            }
 		}
 		else{
-			echo "Unvalid file format";
+			echo "<script>alert('The limit of files' size is between 0 to 16MB!')</script>";
 		}
 	}
 	else{
