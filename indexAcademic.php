@@ -11,8 +11,9 @@
    <div class="divForLeft">
        <p class="divTitle">Course Management</p>
        <li><a href="checkCourse.php">Check All Courses</a></li>
-       <li><a href="course.php">Add Course</a></li>
-       <li><a href="#">Delete Course</a></li>
+       <li><a href="arrangeExam.php">Arrange Exam</a></li>
+       <li><a href="checkExam.php">Check Exam</a></li>
+
    </div>
    <div class="divForRight">
        <p class="divTitle">Student Information</p>
