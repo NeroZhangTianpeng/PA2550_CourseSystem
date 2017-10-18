@@ -10,7 +10,8 @@
     		
    $sql2 = "SELECT student_course.courseId, 
     				course.courseName,
-    				course.courseTeacher,course.timeOfExam
+    				course.courseTeacher,course.startTimeOfExam,
+            course.finishTimeOfExam,course.roomOfExam
 			FROM student_course,course 
     		WHERE course.courseId=student_course.courseId AND course.courseId = any(SELECT student_course.courseId
     							FROM student_course
@@ -33,7 +34,9 @@
 						<td>CourseID</td>
 						<td>CourseName</td>
 						<td>CourseTeacher</td>
-						<td>TimeOfExam</td>
+						<td>Start Time Of Exam</td>
+            <td>Finish Time Of Exam</td>
+            <td>Room of exam</td>
 					</tr>
 				</thead>
 				<tbody>";
@@ -41,10 +44,13 @@
                     echo "<tr><td>" .$row['courseId']. 
                     "</td><td>" .$row['courseName']. 
                     "</td><td>" .$row['courseTeacher'].
-                    "</td><td>" .$row['timeOfExam'].
+                    "</td><td>" .$row['startTimeOfExam'].
+                    "</td><td>" . $row['finishTimeOfExam'].
+                    "</td><td>" .$row['roomOfExam'].
                     "</td></tr>";
                     	
                 }
+                echo "</tbody>";
 				
 			?>
 	</table>

@@ -35,6 +35,7 @@
     		$sql2 = "SELECT student_course.courseId, student_course.mark,
     						course.courseName,course.courseState,course.courseFee,
     						course.courseTeacher,course.startTimeOfExam,course.finishTimeOfExam,
+    						course.roomOfExam,
     						course.courseCredit,course.`Pre-requisiteCourse`
 							
     				FROM student_course,course 
@@ -59,6 +60,7 @@
 						<td>Pre-requisiteCourse</td>
 						<td>Start Time Of Exam</td>
                         <td>Finish Time Of Exam</td>
+                        <td>Room of exam</td>
 						<td>Course Mark</td>
 					</tr>
 				</thead>
@@ -73,6 +75,7 @@
 					"</td><td>".$row2['Pre-requisiteCourse'].
                     "</td><td>" .$row2['startTimeOfExam'].
                     "</td><td>" . $row2['finishTimeOfExam'].
+                    "</td><td>" .$row2['roomOfExam'].
                     "</td><td>" .$row2['mark'].
                     "</td></tr>";
                 }

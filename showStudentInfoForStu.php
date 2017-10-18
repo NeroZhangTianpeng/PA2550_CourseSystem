@@ -10,7 +10,8 @@
     		
    $sql2 = "SELECT student_course.courseId, student_course.mark,
     		course.courseName,course.courseState,course.courseFee,
-    		course.courseTeacher,course.timeOfExam,
+    		course.courseTeacher,course.startTimeOfExam,course.finishTimeOfExam,
+    		course.roomOfExam,
     		course.courseCredit,course.`Pre-requisiteCourse`			
     	FROM student_course,course 
     	WHERE course.courseId=student_course.courseId AND course.courseId = 
@@ -40,7 +41,9 @@
 						<td>CourseTeacher</td>
 						<td>CourseCredit</td>
 						<td>Pre-requisiteCourse</td>
-						<td>TimeOfExam</td>
+						<td>Start Time of Exam</td>
+						<td>Finish Time of Exam</td>
+						<td>Room of exam</td>
 						<td>CourseMark</td>
 					</tr>
 				</thead>
@@ -51,9 +54,11 @@
                     			"</td><td>" .$row['courseState'].
                     			"</td><td>" .$row['courseFee'].
                     			"</td><td>" .$row['courseTeacher'].
-                   			"</td><td>" .$row['courseCredit'].
-					"</td><td>".$row['Pre-requisiteCourse'].
-                    			"</td><td>" .$row['timeOfExam'].
+                   				"</td><td>" .$row['courseCredit'].
+								"</td><td>".$row['Pre-requisiteCourse'].
+                    			"</td><td>" .$row['startTimeOfExam'].
+                    			"</td><td>" .$row['finishTimeOfExam'].
+                    			"</td><td>" .$row['roomOfExam'].
                     			"</td><td>" .$row['mark'].
                     			"</td></tr>";
                 		}
