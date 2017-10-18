@@ -17,7 +17,8 @@
     		
    $sql2 = "SELECT student_course.courseId, student_course.mark,
     		course.courseName,course.courseState,course.courseFee,
-    		course.courseTeacher,
+    		course.courseTeacher,course.startTimeOfExam,course.finishTimeOfExam,
+    		course.roomOfExam,
     		course.courseCredit,course.`Pre-requisiteCourse`			
     	FROM student_course,course 
     	WHERE course.courseId=student_course.courseId AND course.courseId = 
@@ -44,21 +45,25 @@
 						<td>CourseTeacher</td>
 						<td>CourseCredit</td>
 						<td>Pre-requisiteCourse</td>
-				
+						<td>Start Time of Exam</td>
+						<td>Finish Time of Exam</td>
+						<td>Room of exam</td>
 						<td>CourseMark</td>
 					</tr>
 				</thead>
 				<tbody>";
-				while ($row2 = $result2->fetch_assoc()) {
-                     			echo "<tr><td>" .$row2['courseId']. 
-                    			"</td><td>" .$row2['courseName']. 
-                    			"</td><td>" .$row2['courseState'].
-                    			"</td><td>" .$row2['courseFee'].
-                    			"</td><td>" .$row2['courseTeacher'].
-                   			"</td><td>" .$row2['courseCredit'].
-					"</td><td>".$row2['Pre-requisiteCourse'].
-
-                    			"</td><td>" .$row2['mark'].
+				while ($row = $result2->fetch_assoc()) {
+                     			echo "<tr><td>" .$row['courseId']. 
+                    			"</td><td>" .$row['courseName']. 
+                    			"</td><td>" .$row['courseState'].
+                    			"</td><td>" .$row['courseFee'].
+                    			"</td><td>" .$row['courseTeacher'].
+                   				"</td><td>" .$row['courseCredit'].
+								"</td><td>".$row['Pre-requisiteCourse'].
+                    			"</td><td>" .$row['startTimeOfExam'].
+                    			"</td><td>" .$row['finishTimeOfExam'].
+                    			"</td><td>" .$row['roomOfExam'].
+                    			"</td><td>" .$row['mark'].
                     			"</td></tr>";
                 		}
                 		echo "</tbody>";	
