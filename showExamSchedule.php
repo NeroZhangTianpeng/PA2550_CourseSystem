@@ -10,7 +10,7 @@
     		
    $sql2 = "SELECT student_course.courseId, 
     				course.courseName,
-    				course.courseTeacher,course.timeOfExam
+    				course.courseTeacher,course.startTimeOfExam,course.finishTimeOfExam,course.roomOfExam
 			FROM student_course,course 
     		WHERE course.courseId=student_course.courseId AND course.courseId = any(SELECT student_course.courseId
     							FROM student_course
@@ -33,15 +33,19 @@
 						<td>CourseID</td>
 						<td>CourseName</td>
 						<td>CourseTeacher</td>
-						<td>TimeOfExam</td>
+						<td>Start Time Of Exam</td>
+                        <td>Finish Time Of Exam</td>
+                        <td>Room Of Exam</td>
 					</tr>
 				</thead>
 				<tbody>";
-				while ($row = $result2->fetch_assoc()) {
-                    echo "<tr><td>" .$row['courseId']. 
-                    "</td><td>" .$row['courseName']. 
-                    "</td><td>" .$row['courseTeacher'].
-                    "</td><td>" .$row['timeOfExam'].
+				while ($row2 = $result2->fetch_assoc()) {
+                    echo "<tr><td>" .$row2['courseId']. 
+                    "</td><td>" .$row2['courseName']. 
+                    "</td><td>" .$row2['courseTeacher'].
+                    "</td><td>" .$row2['startTimeOfExam'].
+                    "</td><td>" .$row2['finishTimeOfExam'].
+                    "</td><td>" .$row2['roomOfExam'].
                     "</td></tr>";
                     	
                 }
