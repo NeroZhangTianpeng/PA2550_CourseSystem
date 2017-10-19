@@ -15,7 +15,7 @@
 //        $countCourse = 0;
         $countCourse = getRowNum($conn);
         
-        foreach (courseShow(NULL,$conn) as $row) {
+        foreach (courseShow(NULL,NULL,$conn) as $row) {
             $startTimeOfExam = "startTime" . $row['courseId'];
             $finishTimeOfExam = "finishTime" . $row['courseId'];
             $roomOfExam = "room" . $row['courseId'];
@@ -29,13 +29,17 @@
                  $countTrue ++;
              }
             
+            
+        }
+        
+//        echo $countCourse;
+            
             if($countTrue == $countCourse){
                 echo "<script>alert('Successfully!')</script>";
                 echo "<meta http-equiv=refresh content='0; url=checkExam.php'>"; 
             }else{
                 echo "<script>alert('Someting Wrong! Please contact technical staff!')</script>";
             }
-        }
         
     }
     
