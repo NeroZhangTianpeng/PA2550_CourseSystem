@@ -14,7 +14,14 @@
       <p>Add Course</p>
        <form action="addCourse.php" method="post" name="AddCourse">
            <input type="text" name="courseName" id="courseName" placeholder="course name" autofocus/></br>
-           <input type="text" name="courseState" id="courseState" placeholder="course state"/></br>
+            <p>Course state
+            <label>
+           <select name="courseState" id="courseState">
+              <option value="COMPULSORY">COMPULSORY</option>
+              <option value="ELECTIVE">ELECTIVE</option>
+            </select>
+          </label>
+            </p>
            <input type="text" name="courseTeacher" id="courseTeacher" placeholder="course teacher"/></br>
            <input type="number" name="preCourse" id="preCourse" placeholder="pre-requisite course"/></br>
            <input type="number" min="100" name="courseFee" id="courseFee" placeholder="course fee"/></br>
