@@ -5,11 +5,16 @@
 <?php
   include 'helper_php/courseFunction.php';
   include 'includes/db.php';
-        
-   
-    $sql = "INSERT INTO `course`
+    
+    global $conn;
+    
+//    echo "This is preCourse: " . $_POST['preCourse'];
+    
+    $sql = "INSERT INTO course
        (`courseName`, `courseState`, `courseFee`, `courseTeacher`, `courseCredit` , `Pre-requisiteCourse`)
        VALUES ('$_POST[courseName]', '$_POST[courseState]','$_POST[courseFee]','$_POST[courseTeacher]','$_POST[courseCredit]','$_POST[preCourse]')";
+    
+    echo $sql;
 
 if ($conn->query($sql) === TRUE) {
 //   echo "Inserted DATA course successfully</br>";
